@@ -61,3 +61,12 @@ body{
     text-decoration: none;
 }
 
+@media screen and (max-width: 600px) {
+    .login-page {
+        width: 100%;
+    }
+
+    .form {
+        padding: 15px;
+    }
+}

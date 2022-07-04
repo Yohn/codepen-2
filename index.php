@@ -1,12 +1,19 @@
 <?php 
-    include 'checkUser.php'
+    include 'checkUser.php';
+
+    include 'connect.php';
+
+    $sql = 'SELECT projects.pid, projects.pname, users.name FROM projects INNER JOIN users ON projects.user=users.uid;';
+
+    $results = mysqli_query($conn, $sql);
+
 ?>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -35,70 +42,31 @@
     <br>
     <br>
     <div class="feed">
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
-        <div class="post">
-            <div class="post-img">
-                <img src="image/CSS.png" alt="pic" height="100px">
-            </div>
-            <div class="post-detail">
-                our
-            </div>
-        </div>
+        
+    <?php 
+        if($results->num_rows < 0)
+            echo '<center><h1>Nothing to display!</h1></center>';
+        else 
+            while($row = mysqli_fetch_assoc($results)) {
+                echo 
+                    "<a class='post' href='editor.php?id=". $row['pid'] ."'>
+                        <div class='post-img'>
+                            <iframe src='view.php?id=". $row['pid'] ."' sandbox='allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-presentation' frameborder='0' loading='lazy' scrolling='no'></iframe>
+                        </div>
+                        <div class='post-detail'>
+                            <div class='avatar square'>
+                                <div class='avatar__letters'>". ucfirst($row['name'])[0] ."</div>
+                            </div>
+                            <div class='user-info'>
+                                <div class='post-title'>". $row['pname'] ."</div>
+                                <span>". $row['name'] ."</span>
+                            </div>
+                        </div>
+                    </a>";
+                
+            }
+        ?> 
+    </div>
 </body>
 
 </html>

@@ -29,6 +29,7 @@ header {
     background: #1a009c;
     justify-content: space-between;
     border-bottom: 1px solid var(--light-blue);
+    z-index: 999;
 }
 
 .header_two {
@@ -67,33 +68,33 @@ header {
 }
 
 .avatar {
-    /* Center the content */
     display: inline-block;
     vertical-align: middle;
 
-    /* Used to position the content */
     position: relative;
 
-    /* Colors */
     background-color: #ff7ca9;
 
 
     color: #fff;
 
-    /* Rounded border */
     border-radius: 50%;
     height: 48px;
     width: 48px;
 }
 
+.avatar.square {
+    border-radius: 3px;
+    height: 40px;
+    width: 40px;
+}
+
 .avatar__letters {
-    /* Center the content */
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
 }
-
 
 .feed {
     display: grid;
@@ -106,8 +107,16 @@ header {
 .post {
     border-radius: 10px;
     border: 1px solid rgb(107, 107, 107);
+    transition: transform 180ms ease-in;
+}
 
+.post:hover {
+    transform: scale(1.025);
+}
 
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .post-img {
@@ -115,6 +124,7 @@ header {
     width: 100%;
     height: 200px;
     overflow: hidden;
+    background: #fff;
 }
 
 .post-img img {
@@ -123,8 +133,25 @@ header {
     object-fit: cover;
 }
 
+.post-img > iframe {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
 .post-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
     padding: 7px;
-    font-size: 22px;
     font-weight: bold;
+}
+
+.user-info span {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.post-title {
+    font-size: 22px;
 }

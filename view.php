@@ -1,10 +1,6 @@
 <?php
 include 'checkUser.php';
 
-if ($isLogged == false) {
-    header('Location: login.php');
-}
-
 $pid = $_GET['id'];
 
 if (empty($pid) & $pid == null) {

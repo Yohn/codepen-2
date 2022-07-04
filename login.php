@@ -31,37 +31,24 @@ if(isset($_POST['submit'])){
    }
 
 
-}
-
-    
-
-
-      
+}  
 ?>
 <html>
-    <head>
+ <head>
     <title>Login and Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
-    </head>
+ </head>
  <body>
     <div class="login-page">
     <div class="form">  
-       
-
         <form class="login-form" action="" method="post">
-        <input type="text" name="name" placeholder="user name" maxlength="15" minlength="3"  value="<?php echo $name; ?>" required/>
-        <input type="password" name="pass" placeholder="password" minlength="6"  <?php echo $pass; ?> required/>
-        <button name="submit">Login</button>
-        <p class="message">Not Registered? <a href="register.php">Register</a></p>
+            <input type="text" name="name" placeholder="user name" maxlength="15" minlength="3"  value="<?php echo $name; ?>" required/>
+            <input type="password" name="pass" placeholder="password" minlength="6"  <?php echo $pass; ?> required/>
+            <button name="submit">Login</button>
+            <p class="message">Not Registered? <a href="register.php">Register</a></p>
         </form>
     </div>      
     </div>
-
-    
-
-     
-
-
-
  </body>    
 </html>

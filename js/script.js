@@ -5,11 +5,11 @@ const result = document.querySelector('#result');
 const code_form = document.querySelector('#code-form');
 
 function run() {
-  // result.contentDocument.head.innerHTML =
-  //   `<style>${css_code.value}</style>`;
-  // result.contentDocument.body.innerHTML = html_code.value;
+  result.contentDocument.head.innerHTML =
+    `<style>${css_code.value}</style>`;
+  result.contentDocument.body.innerHTML = html_code.value;
 
-  result.contentDocument.body.innerHTML = `<style>${css_code.value}</style>` + html_code.value;
+  // result.contentDocument.body.innerHTML = `<style>${css_code.value}</style>` + html_code.value;
   result.contentWindow.eval(js_code.value);
 }
 
@@ -68,6 +68,3 @@ function showToast(msg, isError = false) {
     x.removeClass('show');
   }, 3000);
 }
-
-
-// TODO: - Screenshot(document.getElementById("result").contentWindow.document.body)

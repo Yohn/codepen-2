@@ -10,6 +10,7 @@ if(isset($_SESSION['name'])){
     $uid = $_SESSION['uid'];
     
   // echo "<script>alert('".$_SESSION['name']."')</script>";
+  // echo "<script>alert('".$username."')</script>";
   // echo "<script>alert('".$_SESSION['uid']."')</script>";
 
 }

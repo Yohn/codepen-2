@@ -25,6 +25,9 @@ if ($result->num_rows > 0) {
     $css = $row['css'];
     $js = $row['js'];
     $pname = $row['pname'];
+    $user = $row['user'];
+
+    $isOwner = $user === $_SESSION['uid'];
 } else {
     echo "<script>alert('No Such Project Exists!')</script>";
 }
@@ -65,11 +68,15 @@ if ($result->num_rows > 0) {
                     <textarea name="js"></textarea>
                 </div>
                 <div class="actions">
-                    <input type="text" name="pname" id="pname" value="<?php echo $pname ?>"/>
+                    <input type="text" name="pname" id="pname" value="<?php echo $pname ?>" <?php if(!$isOwner) echo "disabled" ?>/>
                     <div class="buttons">
-                        <button type="submit" name="submit" class="button" id="save-btn"> Save </button>
+                        <?php
+                            if($isOwner)
+                                echo '<button type="submit" name="submit" class="button" id="save-btn"> Save </button>';
+                            else
+                                echo '<span style="display: block;margin-bottom: 16px;text-align: center;cursor: pointer;" class="button">You\'re not the owner of this project</span>'
+                        ?>
                         <a href="logout.php" class="button"> Logout </a>
-                        <a id="test" class="button"> Screenshot </a>
                     </div>
                 </div>
             </div>
